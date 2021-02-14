@@ -3,6 +3,8 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 	"io/ioutil"
+	"github.com/go-git/go-git/v5"
+	"os"
 )
 
 var initCmd = &cobra.Command{
@@ -10,15 +12,35 @@ var initCmd = &cobra.Command{
 	Short: "initialize directory for iplan use",
 	Long:  `Sets up config file with sample story and make directory versionable.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// Do Stuff Here
+		initGit()
 		createConfigFile()
 	},
 }
 
-func createConfigFile() {
+func initGit() (ok bool){
+	path, err := os.Getwd()
+	if err !=nil {
+		return false
+	}
+
+	_, err = git.PlainInit(path, false)
+	if err !=nil {
+		return false
+	}
+
+	return true
+}
+
+func createConfigFile() (ok bool) {
 	d1 := []byte(`---
 author: YOUR NAME <you@email.me>
 `)
 	err := ioutil.WriteFile("./.iplan.yaml", d1, 0644)
-	cobra.CheckErr(err)
+	if err != nil {
+		return false
+	}
+
+	return true
 }
+
+
