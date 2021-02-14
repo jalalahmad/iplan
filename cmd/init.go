@@ -1,9 +1,9 @@
 package cmd
 
 import (
+	"github.com/go-git/go-git/v5"
 	"github.com/spf13/cobra"
 	"io/ioutil"
-	"github.com/go-git/go-git/v5"
 	"os"
 )
 
@@ -17,14 +17,14 @@ var initCmd = &cobra.Command{
 	},
 }
 
-func initGit() (ok bool){
+func initGit() (ok bool) {
 	path, err := os.Getwd()
-	if err !=nil {
+	if err != nil {
 		return false
 	}
 
 	_, err = git.PlainInit(path, false)
-	if err !=nil {
+	if err != nil {
 		return false
 	}
 
@@ -42,5 +42,3 @@ author: YOUR NAME <you@email.me>
 
 	return true
 }
-
-
