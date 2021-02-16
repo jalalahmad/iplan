@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/spf13/cobra"
 	"os"
+
+	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
@@ -12,7 +13,7 @@ var rootCmd = &cobra.Command{
 	Long: `A Fast and Flexible text based user story management utility
 built in Go.`,
 	Run: func(cmd *cobra.Command, args []string) {
-	// Do Stuff Here
+		// Do Stuff Here
 	},
 }
 

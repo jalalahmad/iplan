@@ -2,15 +2,16 @@ package main
 
 import (
 	"fmt"
-	"github.com/spf13/viper"
 	"io/ioutil"
 	"os"
 	"path"
+
+	"github.com/spf13/viper"
 )
 
 const (
-	CfgFileName = ".iplan"
-	GitIgnoreFileName = ".gitignore"
+	CfgFileName          = ".iplan"
+	GitIgnoreFileName    = ".gitignore"
 	SampleCfgFileContent = `---
 author: YOUR NAME <you@email.me>
 `
@@ -18,8 +19,8 @@ author: YOUR NAME <you@email.me>
 .iplan.*
 `
 )
-var cfgFile = ""
 
+var cfgFile = ""
 
 func _createFileWithContent(filepath string, content string) error {
 	contentBytes := []byte(content)
@@ -27,7 +28,7 @@ func _createFileWithContent(filepath string, content string) error {
 }
 
 func createInitialFiles(basePath string) error {
-	err := _createFileWithContent(path.Join(basePath, CfgFileName + ".yaml"), SampleCfgFileContent)
+	err := _createFileWithContent(path.Join(basePath, CfgFileName+".yaml"), SampleCfgFileContent)
 	if err != nil {
 		return err
 	}

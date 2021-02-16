@@ -7,13 +7,13 @@ import (
 )
 
 func initEmptyGit(basePath string) (repository *git.Repository, err error) {
- 	return git.PlainInit(basePath, false)
+	return git.PlainInit(basePath, false)
 }
 
 func addAndCommitFile(repository *git.Repository, filePath string) (plumbing.Hash, error) {
 	var h plumbing.Hash
 	w, err := repository.Worktree()
-	if err!= nil {
+	if err != nil {
 		return h, err
 	}
 	fmt.Println(w.Status())
