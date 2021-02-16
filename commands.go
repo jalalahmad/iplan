@@ -26,6 +26,7 @@ var initCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
+
 		r, err := initEmptyGit(cwd)
 		if err != nil {
 			return err

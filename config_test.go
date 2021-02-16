@@ -1,7 +1,9 @@
 package main
 
 import (
+	"github.com/spf13/viper"
 	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -20,9 +22,14 @@ func _tear_directory() {
 func TestConfig(t *testing.T) {
 	_setup_directory()
 	createInitialFiles(".")
-	assert.FileExists(t, ".iplan.yaml")
-	assert.FileExists(t, ".gitignore")
-	initConfig()
+	t.Run("createInitialFiles", func (t *testing.T)  {
+		assert.FileExists(t, CfgFileName + ".yaml")
+		assert.FileExists(t, ".gitignore")
+	})
+	t.Run("initConfig", func (t *testing.T) {
+		initConfig()
+		expected, _ := filepath.Abs(CfgFileName + ".yaml")
+		assert.Equal(t, expected, viper.ConfigFileUsed() )
+	})
 	_tear_directory()
-
 }
