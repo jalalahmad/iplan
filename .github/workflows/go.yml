@@ -24,9 +24,5 @@ jobs:
     - name: Test
       run: go test  -v ./...
 
-    - uses: paambaati/codeclimate-action@v2.2.4
-      env:
-        CC_TEST_REPORTER_ID: f731e9ce4d89cff1eaafb626bee6808dc395bb320039d2ed5acca8d9d7c13b9c
-      with:
-        coverageCommand: go tool cover
+
 
