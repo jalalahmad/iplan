@@ -4,6 +4,7 @@ go 1.15
 
 require (
 	github.com/blang/vfs v1.0.0
+	github.com/go-bindata/go-bindata v3.1.2+incompatible // indirect
 	github.com/go-git/go-git/v5 v5.2.0
 	github.com/mitchellh/gox v1.0.1 // indirect
 	github.com/spf13/afero v1.1.2

@@ -37,7 +37,7 @@ var initCmd = &cobra.Command{
 			return err
 		}
 
-		_, err = addAndCommitFile(r, ".gitignore")
+		_, err = addAndCommitFile(r, "gitignore")
 		return err
 	},
 }

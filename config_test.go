@@ -23,12 +23,13 @@ func TestConfig(t *testing.T) {
 	_setup_directory()
 	createInitialFiles(".")
 	t.Run("createInitialFiles", func (t *testing.T)  {
-		assert.FileExists(t, CfgFileName + ".yaml")
+		assert.FileExists(t, ".iplan.yaml")
 		assert.FileExists(t, ".gitignore")
+		assert.DirExists(t,".templates")
 	})
 	t.Run("initConfig", func (t *testing.T) {
 		initConfig()
-		expected, _ := filepath.Abs(CfgFileName + ".yaml")
+		expected, _ := filepath.Abs(".iplan.yaml")
 		assert.Equal(t, expected, viper.ConfigFileUsed() )
 	})
 	_tear_directory()

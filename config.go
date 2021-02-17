@@ -2,39 +2,22 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
-	"path"
 
 	"github.com/spf13/viper"
 )
 
-const (
-	CfgFileName          = ".iplan"
-	GitIgnoreFileName    = ".gitignore"
-	SampleCfgFileContent = `---
-author: YOUR NAME <you@email.me>
-`
-	GitIgnoreFileContent = ` #Ignore Setting
-.iplan.*
-`
-)
 
 var cfgFile = ""
 
-func _createFileWithContent(filepath string, content string) error {
-	contentBytes := []byte(content)
-	return ioutil.WriteFile(filepath, contentBytes, 0644)
-}
 
 func createInitialFiles(basePath string) error {
-	err := _createFileWithContent(path.Join(basePath, CfgFileName+".yaml"), SampleCfgFileContent)
-	if err != nil {
+	err := RestoreAssets(".","")
+	if err!=nil {
 		return err
 	}
 
-	return _createFileWithContent(path.Join(basePath, GitIgnoreFileName), GitIgnoreFileContent)
-
+	return os.Rename("gitignore", ".gitignore")
 }
 
 func initConfig() {
@@ -44,7 +27,7 @@ func initConfig() {
 	} else {
 		cwd, _ := os.Getwd()
 		viper.AddConfigPath(cwd)
-		viper.SetConfigName(CfgFileName)
+		viper.SetConfigName(".iplan")
 	}
 
 	viper.AutomaticEnv()
