@@ -4,7 +4,7 @@
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/jalalahmad/iplan)]()  
 [![Issues](https://img.shields.io/codeclimate/issues/jalalahmad/iplan)]()
 [![TechDebt](https://img.shields.io/codeclimate/tech-debt/jalalahmad/iplan)]()
-
+[![CodeQL](https://github.com/jalalahmad/iplan/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/jalalahmad/iplan/actions/workflows/codeql-analysis.yml)
 Commandline tool to manage user stories with Plain Text (Markdown)
 ## Contributing
 Checkout our [contribution](CONTRIBUTING.md) guidelines
