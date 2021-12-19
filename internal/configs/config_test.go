@@ -1,4 +1,4 @@
-package main
+package configs
 
 import (
 	"github.com/spf13/viper"
@@ -21,16 +21,16 @@ func _tear_directory() {
 
 func TestConfig(t *testing.T) {
 	_setup_directory()
-	createInitialFiles(".")
-	t.Run("createInitialFiles", func (t *testing.T)  {
+	CreateInitialFiles(".")
+	t.Run("createInitialFiles", func(t *testing.T) {
 		assert.FileExists(t, ".iplan.yaml")
 		assert.FileExists(t, ".gitignore")
-		assert.DirExists(t,".templates")
+		assert.DirExists(t, ".templates")
 	})
-	t.Run("initConfig", func (t *testing.T) {
-		initConfig()
+	t.Run("initConfig", func(t *testing.T) {
+		InitConfig()
 		expected, _ := filepath.Abs(".iplan.yaml")
-		assert.Equal(t, expected, viper.ConfigFileUsed() )
+		assert.Equal(t, expected, viper.ConfigFileUsed())
 	})
 	_tear_directory()
 }

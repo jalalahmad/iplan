@@ -1,9 +1,9 @@
 // Code generated for package main by go-bindata DO NOT EDIT. (@generated)
 // sources:
-// resources/.iplan.yaml
-// resources/.templates/userstory.md
-// resources/gitignore
-package main
+// assets/.iplan.yaml
+// assets/.templates/userstory.md
+// assets/gitignore
+package configs
 
 import (
 	"bytes"

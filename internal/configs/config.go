@@ -1,4 +1,4 @@
-package main
+package configs
 
 import (
 	"fmt"
@@ -7,23 +7,21 @@ import (
 	"github.com/spf13/viper"
 )
 
+var CfgFile = ""
 
-var cfgFile = ""
-
-
-func createInitialFiles(basePath string) error {
-	err := RestoreAssets(".","")
-	if err!=nil {
+func CreateInitialFiles(basePath string) error {
+	err := RestoreAssets(".", "")
+	if err != nil {
 		return err
 	}
 
 	return os.Rename("gitignore", ".gitignore")
 }
 
-func initConfig() {
-	if cfgFile != "" {
+func InitConfig() {
+	if CfgFile != "" {
 		// Use config file from the flag.
-		viper.SetConfigFile(cfgFile)
+		viper.SetConfigFile(CfgFile)
 	} else {
 		cwd, _ := os.Getwd()
 		viper.AddConfigPath(cwd)

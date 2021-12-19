@@ -1,4 +1,4 @@
-package main
+package iplan
 
 import (
 	"fmt"
@@ -6,11 +6,11 @@ import (
 	"github.com/go-git/go-git/v5/plumbing"
 )
 
-func initEmptyGit(basePath string) (repository *git.Repository, err error) {
+func InitEmptyGit(basePath string) (repository *git.Repository, err error) {
 	return git.PlainInit(basePath, false)
 }
 
-func addAndCommitFile(repository *git.Repository, filePath string) (plumbing.Hash, error) {
+func AddAndCommitFile(repository *git.Repository, filePath string) (plumbing.Hash, error) {
 	var h plumbing.Hash
 	w, err := repository.Worktree()
 	if err != nil {

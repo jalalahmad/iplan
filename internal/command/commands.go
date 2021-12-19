@@ -1,7 +1,9 @@
-package main
+package command
 
 import (
 	"fmt"
+	"github.com/jalalahmad/iplan/internal/app/iplan"
+	"github.com/jalalahmad/iplan/internal/configs"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -27,28 +29,28 @@ var initCmd = &cobra.Command{
 			return err
 		}
 
-		r, err := initEmptyGit(cwd)
+		r, err := iplan.InitEmptyGit(cwd)
 		if err != nil {
 			return err
 		}
 
-		err = createInitialFiles(cwd)
+		err = configs.CreateInitialFiles(cwd)
 		if err != nil {
 			return err
 		}
 
-		_, err = addAndCommitFile(r, "gitignore")
+		_, err = iplan.AddAndCommitFile(r, "gitignore")
 		return err
 	},
 }
 
 func init() {
-	cobra.OnInitialize(initConfig)
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is ./.iplan.yaml)")
+	cobra.OnInitialize(configs.InitConfig)
+	rootCmd.PersistentFlags().StringVar(&configs.CfgFile, "config", "", "config file (default is ./.iplan.yaml)")
 	rootCmd.AddCommand(initCmd)
 }
 
-func execute() {
+func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
